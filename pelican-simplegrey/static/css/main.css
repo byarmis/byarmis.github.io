@@ -12,7 +12,7 @@ Colors :
 @import url("pygment.css");
 
 
-/* Latout */
+/* Layout */
 
 article,
 figcaption,
@@ -31,7 +31,7 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 16px;
   line-height: 150%;
   text-align: left;
@@ -64,6 +64,7 @@ header {
   display: table-cell;
   width: 25%;
   border-right: 1px solid #d6d6d6;
+  border-left: 1px solid #d6d6d6;
   padding: 0 20px 1em 20px;
 }
 
@@ -125,7 +126,7 @@ header .pages a {
 /* Titles */
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Source Sans Pro",sans-serif;
+    font-family: "Source Sans 3",sans-serif;
     font-weight: 400;
     line-height: 125%;
 }
@@ -167,7 +168,7 @@ a:hover, a:active {
 }
 
 pre {
-  font-family: 'Source Code Pro',monospace;
+  font-family: 'Source Code 3',monospace;
   background: none repeat scroll 0 0 #F0F0F0;
   border-radius: 2px;
   font-size: 0.9em;
@@ -308,6 +309,9 @@ ol.archive li .tags
 .social a[href*='rss.xml']:before {content: url('../images/icons/feed-18px.png'); }
 .social a[href*='atom.xml']:before {content: url('../images/icons/feed-18px.png'); }
 
+/* byarmis */
+.social a[href*='youtube.com']+ i:before {content: url('../images/icons/youtube-18px.png'); }
+.social a[href*='instagram.com']+ i:before {content: url('../images/icons/instagram-18px.png'); }
 
 /* Tag cloud */
 

@@ -43,7 +43,7 @@ AUTHOR_FEED_RSS = None
 # Blogroll
 LINKS = (
         ('email me', ('mailto:ben@yarm.is'))
-        , ("this site's repo", ('https://gitlab.com/byarmis/byarmis.gitlab.io'))
+        , ("this site's repo", ('https://github.com/byarmis/byarmis.github.io'))
         )
 
 # Social widget
