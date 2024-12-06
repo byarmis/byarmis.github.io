@@ -48,9 +48,11 @@ LINKS = (
 
 # Social widget
 SOCIAL = (
-        ('gitlab', 'https://gitlab.com/byarmis/')
-      , ('github', 'https://github.com/byarmis/')
+      ('github', 'https://github.com/byarmis/')
       , ('twitter', 'https://twitter.com/byarmis/')
+      , ('instagram', 'https://www.instagram.com/byarmis')
+      , ('bluesky', 'https://bsky.app/profile/byarmis.bsky.social')
+      , ('youtube', 'https://youtube.com/benyarmis')
       , ('linkedin', 'https://www.linkedin.com/in/byarmis/')
          )
 
