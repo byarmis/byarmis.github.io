@@ -7,7 +7,7 @@ Summary: Impractical portable computing
 
 This is what I'm calling the Kindleberry Pi Zero W.
 
-![Kindleberry Pi Zero W |]({filename}/images/KindleberryPi/KindleberryPiZeroW.jpg)
+![Kindleberry Pi Zero W |]({static}/images/KindleberryPi/KindleberryPiZeroW.jpg)
 
 Yeah, I know it's a mouthful, it just seemed like the only appropriate name.
 It's a Raspberry Pi Zero W, a Kindle Touch, and a Bluetooth keyboard, all routed through my phone acting as a router and wireless access point.
@@ -30,7 +30,7 @@ Ok, there might also be a slight hipster air about the whole thing that also cal
 
 * Kindle
 
-    ![Kindle >*]({filename}/images/KindleberryPi/Kindle.jpg)
+    ![Kindle >*]({static}/images/KindleberryPi/Kindle.jpg)
 
     I'd heavily suggest using one that you already have and not buy it for this project exclusively.
     While fun, I wouldn't say it's worth the price of entry.
@@ -45,7 +45,7 @@ Ok, there might also be a slight hipster air about the whole thing that also cal
 
 * Raspberry Pi Zero W / Case / microSD Card
 
-    ![RaspberryPi >*]({filename}/images/KindleberryPi/PiZero.jpg)
+    ![RaspberryPi >*]({static}/images/KindleberryPi/PiZero.jpg)
 
     It doesn't have to be the Zero, but I do suggest having one with built-in WiFi / Bluetooth-- it's one less thing that you have to worry about setting up.
     Plus, I like not having dongles sticking out of the Pi.
@@ -62,7 +62,7 @@ Ok, there might also be a slight hipster air about the whole thing that also cal
 
 * Battery Bank
 
-    ![Battery >*]({filename}/images/KindleberryPi/Battery.jpg)
+    ![Battery >*]({static}/images/KindleberryPi/Battery.jpg)
 
     In order for this to be portable, you need a battery bank powering the Pi.
     I'm using [this](https://www.amazon.com/dp/B00Z9QVE4Q) one from Anker and I'm liking it so far.
@@ -74,7 +74,7 @@ Ok, there might also be a slight hipster air about the whole thing that also cal
 
 * Keyboard
 
-    ![HHKB >*]({filename}/images/KindleberryPi/HHKB.jpg)
+    ![HHKB >*]({static}/images/KindleberryPi/HHKB.jpg)
 
     I'm using an HHKB modified with a Bluetooth controller.
     The keyboard was purchased from [EliteKeyboards](http://elitekeyboards.com/products.php?sub=pfu_keyboards,hhkbpro2&pid=pdkb400b), but you can also probably get it from Amazon; the controller was purchased from [1UPKeyboards](https://1upkeyboards.com/hhkb-bluetooth-controller.html) with a battery from either Adafruit or Sparkfun.
@@ -89,7 +89,7 @@ Ok, there might also be a slight hipster air about the whole thing that also cal
 
 * Router
 
-    ![PortableHotspot >*]({filename}/images/KindleberryPi/PortableHotspot.jpg)
+    ![PortableHotspot >*]({static}/images/KindleberryPi/PortableHotspot.jpg)
 
     I talk more about this below, but you need something to act as a router for traffic between the Pi and the Kindle.
     It's even better if it has an internet connection for minimal web connectivity.
@@ -101,7 +101,7 @@ Ok, there might also be a slight hipster air about the whole thing that also cal
 
 * Adapters and cables
 
-    ![Cables >*]({filename}/images/KindleberryPi/Cables.jpg)
+    ![Cables >*]({static}/images/KindleberryPi/Cables.jpg)
 
     By my count, there's four different batteries and three different connectors involved with all of the electronics in play here:
 
@@ -218,7 +218,7 @@ Texas.
 
 ----
 
-![Current State |*]({filename}/images/KindleberryPi/KindleberryPiZeroW_with_cables.jpg)
+![Current State |*]({static}/images/KindleberryPi/KindleberryPiZeroW_with_cables.jpg)
 
 I mostly just use this around the house at the moment and bring it to the office once or twice to show off to coworkers.
 I mostly plan on using it for writing blog posts and playing around with Python.

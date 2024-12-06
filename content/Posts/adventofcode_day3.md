@@ -34,7 +34,7 @@ Holy moly, this is quite the jump in difficulty from the previous days!
 Looking at the dropoff from Day 2 to Day 3 and the increase to Day 4, it looks like this one's unusually difficult.
 There's no one-liner that can get us the answer and we'll have to develop an algorithm and a data structure.
 
-![Stars >]({filename}/images/AdventOfCode/Day3.png)
+![Stars >]({static}/images/AdventOfCode/Day3.png)
 
 There may be a closed-form solution that can determine what layer a number is on (its x distance from the center) as well as its height, but I couldn't come up with one after a bit of thinking.
 19 would have to know that it's on the horizontal, 20 has to decrease to 19, 18 would have to increase, and 19 has to get to 6; all of which seems really difficult.
@@ -217,7 +217,7 @@ This can be broken down into two parts-- creating the spiral and then walking th
 Creating the spiral is both $O(N)$ time and memory where $N$ is our input number.
 We pretty much just touch each node once as we're creating it.
 
-![Complexity >]({filename}/images/AdventOfCode/Day3_spiral_size.png)
+![Complexity >]({static}/images/AdventOfCode/Day3_spiral_size.png)
 
 Walking back through the spiral can be done in $O(\sqrt N)$ time.
 If we double the number that we're interested in (say, going from 10 to 20 as our input), we don't have to double the number of layers since each layer can hold more than the one before it.
