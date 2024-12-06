@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="">	
+<head>
+    <link rel="canonical" href="/kindleberry-pi-zero-w.html" />
+	<meta charset="utf-8"/>
+	<title>Kindleberry Pi Zero W - BLOG</title>	
+	<meta name="author" content="Ben Yarmis">
+	
+
+	<meta name="description" content="Impractical portable computing">
+
+
+	<link rel="top" href="#" /><link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic,400italic,600italic|Source+Code+Pro' rel='stylesheet' type='text/css'></link>
+	<link rel="stylesheet" href="/theme/css/main.css" type="text/css" />
+		
+
+</head>
+	
+<body>
+
+    <div class="container">
+	  
+	  <header role="banner">
+	    <div class="feeds">
+	    </div>
+	      <nav class="pages">
+			  <a href="/pages/about-me.html">About Me</a>
+
+            <a href="/pdfs/YarmisResume.pdf">CV</a>
+	      </nav>
+		<a href="" class="title">BLOG</a>
+      </header>
+	
+	  <div class="wrapper">
+
+		  <div role="main" class="content">
+	<article class="full">
+			
+		<h1>Kindleberry Pi Zero W</h1>
+		
+<div class="metadata">
+  <time datetime="2018-01-03T00:00:00-06:00" pubdate>Wed January 3, 2018</time>
+    <address class="vcard author">
+      by <a class="url fn" href="/author/ben-yarmis.html">Ben Yarmis</a>
+    </address>
+  in <a href="/category/projects.html">Projects</a>
+<p class="tags">tagged <a href="/tag/eink.html">eink</a>, <a href="/tag/raspberry-pi.html">raspberry pi</a></p></div>		
+		<h2>What</h2>
+<p>This is what I'm calling the Kindleberry Pi Zero W.</p>
+<p><img alt="Kindleberry Pi Zero W |" src="/images/KindleberryPi/KindleberryPiZeroW.jpg"></p>
+<p>Yeah, I know it's a mouthful, it just seemed like the only appropriate name.
+It's a Raspberry Pi Zero W, a Kindle Touch, and a Bluetooth keyboard, all routed through my phone acting as a router and wireless access point.
+It's a portable, minimalistic-ish computing solution in search of a problem.
+And I really like it!</p>
+<h2>Why</h2>
+<p>I remember reading about a <a href="https://maxogden.com/kindleberry-wireless.html">Kindleberry Pi</a> that consisted of a newer Kindle and an older Raspberry Pi.
+This is an update to that update.
+I figured, since I have a Kindle sitting around doing nothing, a spare-at-the-moment Raspberry Pi Zero W, and a nice lazy long weekend ahead of me, I might as well see how far I can get with setting it up.
+Turns out, pretty far!</p>
+<p>At the end of the weekend (plus an evening to iron the kinks out), I have something that I can throw in a bag and take on a plane for fun, portable computing.
+Ok, there might also be a slight hipster air about the whole thing that also calls to me, sue me.</p>
+<h2>How</h2>
+<h3>Hardware</h3>
+<ul>
+<li>
+<p>Kindle</p>
+<p><img alt="Kindle &gt;*" src="/images/KindleberryPi/Kindle.jpg"></p>
+<p>I'd heavily suggest using one that you already have and not buy it for this project exclusively.
+While fun, I wouldn't say it's worth the price of entry.</p>
+<p>I have a Kindle Touch that I've had since college and it's still kicking.<br>
+Not sure the exact version, but the serial number starts with <code>B00F</code>, if that helps at all.
+This is the 3G version, but that doesn't matter for this.</p>
+<p>That may be an interesting addition though-- using the cellular connection to SSH to the Pi instead of WiFi.  I would worry about the "free" cellular internet being turned off though.</p>
+<ul>
+<li>Used Kindle Touches start at around $<a href="https://www.amazon.com/gp/offer-listing/B005890G8Y/ref=olp_twister_child?ie=UTF8&amp;mv_configuration=0">30 on Amazon</a> and new ones can go up to $<a href="https://www.amazon.com/All-New-Amazon-Kindle-Oasis-8GB-Grey/dp/B06XD5YCKX/ref=sr_1_5?ie=UTF8&amp;qid=1515474420&amp;sr=8-5&amp;keywords=kindle">250</a>, but be sure to make sure that whichever one you end up getting is jailbreak-able </li>
+</ul>
+</li>
+<li>
+<p>Raspberry Pi Zero W / Case / microSD Card</p>
+<p><img alt="RaspberryPi &gt;*" src="/images/KindleberryPi/PiZero.jpg"></p>
+<p>It doesn't have to be the Zero, but I do suggest having one with built-in WiFi / Bluetooth-- it's one less thing that you have to worry about setting up.
+Plus, I like not having dongles sticking out of the Pi.
+I heavily suggest also getting a case for the Pi since you'll probably end up throwing it in a bag.
+The microSD card is a given-- at the moment, I'm using a 16GB card I had laying around and have a cheap 32GB on the way.
+Even still, I'm sitting at less than 10% used and I can't imagine using significantly more.</p>
+<ul>
+<li>
+<p>Prices start at $<a href="https://www.adafruit.com/product/3400">10</a>, depending on <a href="https://www.amazon.com/gp/product/B06XD18H6K/ref=oh_aui_detailpage_o00_s01?ie=UTF8&amp;psc=1">bundles</a>.
+Note that I don't suggest the bundle linked, unless you, like me, are driven to order things from Amazon for other reasons (gift cards, etc.).</p>
+</li>
+<li>
+<p>Cases cost around the same, starting at around $<a href="https://www.amazon.com/Zebra-Zero-Raspberry-Wireless-Heatsinks/dp/B071RRYCQ4/ref=sr_1_5?ie=UTF8&amp;qid=1515474323&amp;sr=8-5&amp;keywords=raspberry+pi+zero+case">6</a>, depending on <a href="https://www.amazon.com/gp/product/B06XD18H6K/ref=oh_aui_detailpage_o00_s01?ie=UTF8&amp;psc=1">bundles</a></p>
+</li>
+<li>
+<p>MicroSD cards can be pretty cheap, starting at around $<a href="https://www.amazon.com/SanDisk-Ultra-Micro-Adapter-SDSQUNC-016G-GN6MA/dp/B010Q57SEE/ref=sr_1_6?s=electronics&amp;ie=UTF8&amp;qid=1515474282&amp;sr=1-6&amp;keywords=micro+sd">8 and going up</a>, depending on speeds and capacity.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Battery Bank</p>
+<p><img alt="Battery &gt;*" src="/images/KindleberryPi/Battery.jpg"></p>
+<p>In order for this to be portable, you need a battery bank powering the Pi.
+I'm using <a href="https://www.amazon.com/dp/B00Z9QVE4Q">this</a> one from Anker and I'm liking it so far.</p>
+<p>I was originally going to use a battery pack with roughly twice the capacity, but that one's just too big and the Pi Zero just isn't that power hungry.</p>
+<ul>
+<li>Battery banks cost $<a href="https://www.amazon.com/Aibocn-External-Battery-Charger-Flashlight/dp/B013HIR1Q2/ref=sr_1_5?ie=UTF8&amp;qid=1515474772&amp;sr=8-5&amp;keywords=battery+bank">10 and up</a>.
+The <a href="https://www.amazon.com/gp/product/B00Z9QVE4Q/ref=oh_aui_detailpage_o00_s01?ie=UTF8&amp;psc=1">Anker I used is $30</a></li>
+</ul>
+</li>
+<li>
+<p>Keyboard</p>
+<p><img alt="HHKB &gt;*" src="/images/KindleberryPi/HHKB.jpg"></p>
+<p>I'm using an HHKB modified with a Bluetooth controller.
+The keyboard was purchased from <a href="http://elitekeyboards.com/products.php?sub=pfu_keyboards,hhkbpro2&amp;pid=pdkb400b">EliteKeyboards</a>, but you can also probably get it from Amazon; the controller was purchased from <a href="https://1upkeyboards.com/hhkb-bluetooth-controller.html">1UPKeyboards</a> with a battery from either Adafruit or Sparkfun.
+I'm a fan of mechanical keyboards and this one is my favorite-- it's ok to say that since that's what I'm using to write this.
+I love its portability, layout, and switches.</p>
+<p>When I travel, I like to take one of my keyboards with me and it's usually the HHKB, so it makes sense that I'd use this one with my portable-setup-to-be.
+I know this isn't a keyboard for everyone and you can most definitely use whatever keyboard you'd like-- Bluetooth being another battery you have to charge but one less wire to worry about.
+It can be a little annoying setting up a Bluetooth keyboard if you aren't already connected, so heads up there.</p>
+<ul>
+<li>This specific keyboard cost around $220, the controller board cost $85, and the battery probably cost around $10 or so.</li>
+</ul>
+</li>
+<li>
+<p>Router</p>
+<p><img alt="PortableHotspot &gt;*" src="/images/KindleberryPi/PortableHotspot.jpg"></p>
+<p>I talk more about this below, but you need something to act as a router for traffic between the Pi and the Kindle.
+It's even better if it has an internet connection for minimal web connectivity.
+I've used mine for pretty much just updates and git activity.
+<a href="https://support.google.com/nexus/answer/2812516?hl=en">I use my Pixel 2 as the router</a>, but I also used a portable cellular hotspot briefly and it worked.</p>
+<ul>
+<li>A cursory search indicates portable routers cost $40 and up on Amazon, but your wireless carrier may have deals.
+I use my Pixel 2, so that's "free"</li>
+</ul>
+</li>
+<li>
+<p>Adapters and cables</p>
+<p><img alt="Cables &gt;*" src="/images/KindleberryPi/Cables.jpg"></p>
+<p>By my count, there's four different batteries and three different connectors involved with all of the electronics in play here:</p>
+<ul>
+<li>Keyboard (mini USB)</li>
+<li>Battery pack (micro USB)</li>
+<li>Kindle (micro USB)</li>
+<li>Phone (USB-C)</li>
+</ul>
+<p>The battery bank I got comes with a little bag and in it, I also have two stubby micro USB cables, a USB micro-to-C adapter, a USB micro-to-mini adapter, and a USB-OTG adapter.
+Fortunately, all the cables, adapters, and the Pi Zero all fit in the bag with the battery so it's all still surprisingly portable.</p>
+<ul>
+<li>You can get a multipack of <a href="https://www.amazon.com/CHENYANG-Ultra-Adapter-Connector-Tablet/dp/B015GZOHKW/ref=sr_1_14?ie=UTF8&amp;qid=1515474151&amp;sr=8-14&amp;keywords=usb+otg">USB-OTG adapters for $4.50</a> and a really short <a href="https://www.amazon.com/gp/product/B013G4EAEI/ref=oh_aui_detailpage_o00_s01?ie=UTF8&amp;psc=1">micro-USB cable for around the same price</a>.</li>
+</ul>
+</li>
+</ul>
+<p>So, the cost can range from a few bucks to a few hundred, depending on what you already have and what you end up ordering.</p>
+<h3>Jailbreak the Kindle</h3>
+<p>This part of the process is almost definitely the one that I'm least-familiar with.
+After a bit of Googling and browsing some forums, there's a whole community that I had no idea existed. 
+Deciphering some of the quite old posts can be a little difficult, but there's probably a guide out there on how to upgrade / downgrade your Kindle to a jailbreak-able firmware version and then jailbreak it.
+For my Kindle Touch, I didn't have to change the firmware version even though I thought I did.
+That made trying to jailbreak a little interesting-- I couldn't figure out why downgrading the firmware wasn't working when I was really accidentally trying to upgrade to an incompatible version.
+I finally found and used <a href="https://www.mobileread.com/forums/showthread.php?t=186645">this</a> guide but you will probably have to Google around for your specific Kindle and firmware version.</p>
+<p>Next, you have to install <a href="https://www.fabiszewski.net/kindle-terminal/">KTerm</a> and <a href="https://www.mobileread.com/forums/showthread.php?t=186645">USB Networking</a>.
+The former installs a terminal and the latter installs both an SSH client and server.
+I modified my KTerm configuration file to automatically start in landscape mode and a slightly smaller font size, but that's all easy to change once running by tapping with two fingers. </p>
+<h3>Set up the Raspberry Pi</h3>
+<p>Download the current version of Raspbian (Lite-- we don't need any GUI components) and flash it to the microSD card.
+Set up the appropriate WiFi connectivity information in <code>/etc/wpa_supplicant/wpa_supplicant.conf</code> or by modifying a <code>wpa_supplicant.conf</code> file in the <code>/boot/</code> directory.
+I also suggest putting an empty file called <code>ssh</code> in the <code>/boot/</code> folder to enable SSH for the Pi.</p>
+<p>Boot up, set up, update, and modify however you prefer.
+I do suggest enabling automatically logging in to the terminal via <code>sudo raspi-config</code>.
+Among other things, be sure ton install GNU Screen (<code>sudo apt-get install screen</code>).
+My <code>.screenrc</code> file is pretty boring-- I remapped <code>&lt;C-a&gt;</code> to <code>&lt;C-`&gt;</code> since I like using the former in Vim to increase the next number on the current line.</p>
+<p>I modified my <code>.bash_profile</code> to be the following:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">stty</span><span class="w"> </span><span class="nv">rows</span><span class="w"> </span><span class="mi">29</span>
+<span class="nv">stty</span><span class="w"> </span><span class="nv">columns</span><span class="w"> </span><span class="mi">72</span>
+
+<span class="k">if</span><span class="w"> </span>[<span class="w"> </span><span class="o">-</span><span class="nv">z</span><span class="w"> </span><span class="s2">&quot;$STY&quot;</span><span class="w"> </span>]<span class="c1">;  then</span>
+<span class="w">    </span><span class="k">exec</span><span class="w"> </span><span class="nv">screen</span><span class="w"> </span><span class="o">-</span><span class="nv">xAR</span>
+<span class="nv">fi</span>
+</code></pre></div>
+
+<p>Depending on how you have your font size set up, you may have to play around with the number of rows and columns.
+You can modify those via the terminal without having to re-connect or restart the Pi.</p>
+<h4>The problem of the dashed lines</h4>
+<p>For quite a while, I was getting these weird dashed lines a couple rows up from the bottom of the terminal on the Kindle once I connect to the Pi.
+No amount of playing around with the number of rows and columns (via <code>stty</code> commands) in either the Pi or the Kindle helped things.</p>
+<p>The solution ended up being setting the resolution in the Pi's <code>/boot/config.txt</code> to be that of the Kindle (mine's 800 x 600).
+If you run into a similar problem, update the corresponding lines in the file to be the following:</p>
+<div class="highlight"><pre><span></span><code>framebuffer_width=800
+framebuffer_height=600
+</code></pre></div>
+
+<p>Reboot (<code>sudo reboot</code>) and you should be good to go.</p>
+<h3>Set up the networking components</h3>
+<p>I originally started this project trying to get the Pi to act as a wireless access point and have the Kindle connect to that.
+I found a couple guides online for how to set a Raspberry Pi up as a portable router, using the ethernet jack as an internet connection.
+Even though I could use a USB-to-ethernet adapter with the Pi Zero, that kinda defeated the purpose of a portable computing setup.
+I was able to create a network that I could view and connect to, just none of the devices I tried would stay connected since I don't think they were ever successfully assigned an IP address.
+I now couldn't SSH into the Pi anymore since it's no longer connected to any network.</p>
+<p>It was around this time that I realized disabling the hardware serial pins was probably a bad idea-- I now couldn't connect to or communicate with the Pi at all, from what I could tell.
+Having a little <a href="https://www.sparkfun.com/products/9873">3.3v USB-to-serial adapter</a> was helpful here though.
+Make sure that you don't connect power if it's not a 3.3v adapter-- even if it is, I still wouldn't suggest it since the current requirements might be more than the regulator on the FTDI chip can provide.</p>
+<p>I reflashed the SD card and had a good think in the shower.
+It dawned on me that I would probably want the option for an internet connection at some point so I shouldn't really use the Pi as a router at all.</p>
+<p>I had a portable cellular hotspot in a bag and connected everything to that.
+Still no internet connection since I hadn't topped up the SIM card, but everything was working.</p>
+<p>Another forehead-smacking moment later, I set my phone up as a hotspot and now everything's grand.
+There's one less thing that I need to carry around and keep charged, I don't have to worry about paying extra for internet access, and I have access to the Pi via a terminal that's not on the Kindle should I want to use that (I installed <a href="https://play.google.com/store/apps/details?id=com.server.auditor.ssh.client">Terminus</a>, but there's a bunch of good ones out there).</p>
+<h3>Setting up SSH keys on the Kindle (Optional)</h3>
+<p>I suggest setting up SSH keys on the Kindle and on the Pi so that you don't have to type the password into the Kindle-- the small keyboard and delay is really not conducive to accurately typing in passwords.
+I also suggest generating the keys on the Pi and not the Kindle since it pegged my Kindle's processor to 100% for north of five minutes when I tried and ended up having to kill the process.</p>
+<ul>
+<li>
+<p>Generate the public / private key pair</p>
+<p><code>$ ssh-keygen -t rsa -b 4096</code></p>
+</li>
+<li>
+<p>Enter a passphrase if you want-- I didn't</p>
+</li>
+<li>I suggest naming the file to something a little more descriptive than just <code>id_rsa</code>.</li>
+<li>Copy the private key from the <code>~/.ssh/</code> folder in the Pi to the Kindle using something like SFTP or SCP</li>
+<li>Add the public key to the list of authorized keys on the Pi by running <code>cat &lt;PATH TO PUBLIC KEY&gt; &gt;&gt; ~/.ssh/authorized_keys</code></li>
+<li>Start the SSH agent on the Kindle by running <code>eval $(ssh-agent -s)</code></li>
+<li>Add the private key: <code>ssh-add &lt;PATH TO SSH FILE&gt;</code></li>
+</ul>
+<p>Should be good to go!
+I put the last two steps plus the SSH command itself in a simple shell script on the Kindle and run that to connect to the Pi since the <code>ssh-agent</code> frequently needs to be started (and starting it again has no ill effects).</p>
+<h2>Current State</h2>
+<p>Texas.</p>
+<hr>
+<p><img alt="Current State |*" src="/images/KindleberryPi/KindleberryPiZeroW_with_cables.jpg"></p>
+<p>I mostly just use this around the house at the moment and bring it to the office once or twice to show off to coworkers.
+I mostly plan on using it for writing blog posts and playing around with Python.
+I'll be travelling with this in February, so we'll see how it holds up on an actual plane (and around <em>normal</em> people).</p>
+<h2>Next Steps</h2>
+<p>First and foremost, I need to design and print a stand for the Kindle.
+As it stands now, it doesn't.
+It's propped up against my monitor, a random wall, or anything that I can find depending on where I'm using it.
+The font size, in order to fit any respectable amount of text on the screen, is ever so slightly too small given the current size of my desk or where I've tried setting this thing up.
+I imagine on a plane it'd be not as bad since you can prop it against the chair in front of you, but you might have to struggle with it sliding around.</p>
+<p>I should probably set up OpenVPN on the Pi since I went through the trouble of setting up a Raspberry Pi3 at home running <a href="http://www.pivpn.io/">PiVPN</a> and <a href="https://pi-hole.net/">PiHole</a>.
+I also like the idea of having two Pis that I set up communicate with each other.</p>
+<p>I'm still not convinced of the battery setup.
+I do like having the option for multiple outputs but I don't like not having passthrough charging.
+In order to charge the battery, it can't be powering anything, preventing it from acting as a UPS for the Raspberry Pi Zero or anything like that.
+In order to charge the battery, the Pi has to be shutdown.
+The <a href="https://www.adafruit.com/product/2465">PowerBoost 1000</a> from Adafruit connects to a naked LiPo battery and allows for charging passthough.
+There are holes and mounting points for only one USB port, but it outputs up to an amp so it can probably be split between a few devices to run and power.</p>
+<p>I'm also contemplating printing a new, smaller case for the Pi and maybe adding a small <a href="https://www.adafruit.com/product/3527">OLED display</a> to show network connectivity and CPU statuses.
+The latter of these two things is pretty low on my list since the Pi's connectivity is relatively stable and, if there are any issues with it, there's not much I can do without either a connection to it or bigger computer to modify the SD card.</p>
+<h2>Closing Thoughts</h2>
+<p>After having written the majority of the post using my Kindleberry Pi Zero W, I think I can say definitively that this is not for everyone.
+Knowing an aspiring writer, they desperately want something like this-- a minimalistic, portable writing station with great battery life.
+The <a href="https://getfreewrite.com/">Freewrite</a>, while "neat", is so far out of the realm of possibility at its current price of $500 as to not ever be considered an option.
+The login process, as seamless as I've gotten it with using SSH keys instead of a password, is still way too many steps for it to be an option.
+The connectivity of everything is also not where it'd need to be for me to trust lending this out for anyone to use.
+Even showing my coworkers, the latency of the Kindle's eink screen is too slow for them to be terribly interested.
+For me, the limitations of a text-only Raspberry Pi-based interface are just too much for regular use.
+All the links and images in this post were added on my desktop after having written it just because using a web browser for that is just about mandatory.
+The Kindle's wireless connection also is a little spotty, with frequent disconnects and eventual reconnects.</p>
+<p>Still though, there's something that I really like about the minimalism and portability, if not the practicality.
+This is probably going to be something that I travel with and use but definitely won't be my only computing device.
+Depending on how the MPi3 project goes, it may not even be the only Raspberry Pi that I carry with me.</p>
+<hr>
+<h2>Update</h2>
+<p>So after I posted <a href="https://www.reddit.com/r/raspberry_pi/comments/7psulz/how_i_set_up_my_kindleberry_pi_zero_w_portable/">this on Reddit</a>, it got picked up by Hack-A-Day!
+I actually found out about <a href="https://hackaday.com/2018/01/15/this-portable-pi-may-not-be-what-you-expect/">their post on it</a> from my Google Now feed that Monday morning, so that was pretty incredible to wake up to.
+After Hack-A-Day, <a href="https://blog.adafruit.com/2018/01/19/kindleberry-pi-zero-w-piday-raspberrypi-raspberry_pi/">Adafruit</a> and a few other blogs also picked it up.</p>
+<p>I had someone reach out to me asking about latency and I recorded the below video showing typing some things and running <code>htop</code> and <code>sl</code>.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/e-dsJA_v6cA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>	
+
+	</article>
+
+
+		  </div>	
+		  
+		  <div class="sidebar">
+
+	        <nav>
+	          <h2>Categories</h2>
+	          <ul>
+	              <li ><a href="/category/posts.html">Posts</a></li>
+	              <li class="active"><a href="/category/projects.html">Projects</a></li>
+	          </ul>
+	        </nav>
+
+	          <aside>
+	          <h2>Social</h2>
+			    <ul class="social">
+				  <li><a href="https://gitlab.com/byarmis/">gitlab</a><i></i></li>
+				  <li><a href="https://github.com/byarmis/">github</a><i></i></li>
+				  <li><a href="https://twitter.com/byarmis/">twitter</a><i></i></li>
+				  <li><a href="https://www.linkedin.com/in/byarmis/">linkedin</a><i></i></li>
+			    </ul>
+			  </aside>
+
+	          <aside>
+	            <h2>Links</h2>
+	            <ul>
+	                <li><a href="mailto:ben@yarm.is">email me</a></li>
+	                <li><a href="https://gitlab.com/byarmis/byarmis.gitlab.io">this site's repo</a></li>
+	            </ul>
+	          </aside>
+
+		  </div>
+
+	  </div>
+
+      <footer>
+		<p role="contentinfo">
+        © 2023 Ben Yarmis - Proudly powered by <a href="https://blog.getpelican.com/">pelican</a> with the <a href="https://github.com/fle/pelican-simplegrey">pelican-simplegrey</a> theme, modified.
+    	</p>
+
+	  </footer>	
+
+	</div>
+	
