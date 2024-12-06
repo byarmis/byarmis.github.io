@@ -4,7 +4,7 @@ from datetime import datetime
 AUTHOR = 'Ben Yarmis'
 SITENAME = 'BLOG'
 SITESUBTITLE = 'By Ben Yarmis'
-SITEURL = 'https://blog.yarm.is'
+SITEURL = ''
 THEME = './pelican-simplegrey/'
 
 CURRENT_YEAR = datetime.now().year

@@ -149,5 +149,5 @@ The algorithmic runtime and memory usage for Part Two should be similar to that 
 
 ----
 
-My solutions for the Advent of Code problems are available on [GitLab](https://gitlab.com/byarmis/AdventOfCode) and [GitHub](https://github.com/byarmis/AdventOfCode).
+My solutions for the Advent of Code problems are available on [GitHub](https://github.com/byarmis/AdventOfCode).
 

@@ -159,5 +159,5 @@ Part two, like the first part, runs in $O(N)$ (linear) time.
 
 ----
 
-My solutions for the Advent of Code problems are available on [GitLab](https://gitlab.com/byarmis/AdventOfCode) and [GitHub](https://github.com/byarmis/AdventOfCode).
+My solutions for the Advent of Code problems are available on [GitHub](https://github.com/byarmis/AdventOfCode).
 

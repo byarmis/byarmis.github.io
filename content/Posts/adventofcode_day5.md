@@ -127,5 +127,5 @@ This one's the same as before since the amount we increment by isn't a factor in
 
 ----
 
-My solutions for the Advent of Code problems are available on [GitLab](https://gitlab.com/byarmis/AdventOfCode) and [GitHub](https://github.com/byarmis/AdventOfCode).
+My solutions for the Advent of Code problems are available on [GitHub](https://github.com/byarmis/AdventOfCode).
 

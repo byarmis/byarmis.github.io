@@ -218,4 +218,4 @@ The runtime complexity of it was also terrible since lists were prepended to mul
 
 ----
 
-My solutions for the Advent of Code problems are available on [GitLab](https://gitlab.com/byarmis/AdventOfCode) and [GitHub](https://github.com/byarmis/AdventOfCode).
+My solutions for the Advent of Code problems are available on [GitHub](https://github.com/byarmis/AdventOfCode).

@@ -129,4 +129,4 @@ Fortunately, our input is small enough to allow this to run in a reasonable amou
 
 ----
 
-My solutions for the Advent of Code problems are available on [GitLab](https://gitlab.com/byarmis/AdventOfCode) and [GitHub](https://github.com/byarmis/AdventOfCode).
+My solutions for the Advent of Code problems are available on [GitHub](https://github.com/byarmis/AdventOfCode).
