@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="">	
+<head>
+    <link rel="canonical" href="http://blog.yarm.is/advent-of-code-day-4.html" />
+	<meta charset="utf-8"/>
+	<title>Advent of Code: Day 4 - BLOG</title>	
+	<meta name="author" content="Ben Yarmis">
+	
+
+	<meta name="description" content="My solutions to the the fourth day's problems. Well, that's a bit easier">
+
+
+	<link rel="top" href="#" /><link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic,400italic,600italic|Source+Code+Pro' rel='stylesheet' type='text/css'></link>
+	<link rel="stylesheet" href="http://blog.yarm.is/theme/css/main.css" type="text/css" />
+		
+
+</head>
+	
+<body>
+
+    <div class="container">
+	  
+	  <header role="banner">
+	    <div class="feeds">
+	    </div>
+	      <nav class="pages">
+			  <a href="http://blog.yarm.is/pages/about-me.html">About Me</a>
+
+            <a href="http://blog.yarm.is/pdfs/YarmisResume.pdf">CV</a>
+	      </nav>
+		<a href="http://blog.yarm.is" class="title">BLOG</a>
+      </header>
+	
+	  <div class="wrapper">
+
+		  <div role="main" class="content">
+	<article class="full">
+			
+		<h1>Advent of Code: Day 4</h1>
+		
+<div class="metadata">
+  <time datetime="2018-11-11T00:00:00-06:00" pubdate>Sun November 11, 2018</time>
+    <address class="vcard author">
+      by <a class="url fn" href="http://blog.yarm.is/author/ben-yarmis.html">Ben Yarmis</a>
+    </address>
+  in <a href="http://blog.yarm.is/category/posts.html">Posts</a>
+<p class="tags">tagged <a href="http://blog.yarm.is/tag/python.html">Python</a>, <a href="http://blog.yarm.is/tag/advent-of-code.html">Advent of Code</a>, <a href="http://blog.yarm.is/tag/aoc-2017.html">AoC 2017</a></p></div>		
+		<h2>Part One</h2>
+<blockquote>
+<p>A passphrase consists of a series of words (lowercase letters) separated by spaces.
+To ensure security, a valid passphrase must contain no duplicate words.</p>
+<p>For example:</p>
+<ul>
+<li>
+<p><code>aa bb cc dd ee</code> is valid.</p>
+</li>
+<li>
+<p><code>aa bb cc dd aa</code> is not valid - the word <code>aa</code> appears more than once.</p>
+</li>
+<li>
+<p><code>aa bb cc dd aaa</code> is valid - <code>aa</code> and <code>aaa</code> count as different words.</p>
+</li>
+</ul>
+<p>The system's full passphrase list is available as your puzzle input.</p>
+<p>How many passphrases are valid?</p>
+</blockquote>
+<h3>Interpretation, Planning, and Discussion</h3>
+<p>I'm sorry, what?!
+This is significantly easier than Day 3, to the point where it wouldn't be beyond the realm of possiblity to solve this as a one-liner.</p>
+<p>To solve this, we need to open and parse the file and then determine if something shows up more than once.
+We can store each passphrase as a list and then compare its length to the length of a set made from that list-- if they're equal, every item in the list shows up once.
+If the length of the set is shorter, there was at least one duplicate.</p>
+<h3>Solution</h3>
+<p>The code for this is short enough that I can post all of it before breaking it down and talking about it.</p>
+<div class="highlight"><pre><span></span><code><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;input.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+        <span class="n">pw</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pw</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">pw</span><span class="p">)):</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Part One:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</code></pre></div>
+
+<ul>
+<li><code>i</code> is just the counter of valid passphrases</li>
+<li><code>with</code>, the context manager, takes care of opening and closing the file.
+If there's any error raised by the code in the context manager, it handles closing the file before reraising the error so that files aren't left in a bad state of being opened when they aren't actively being used.</li>
+<li>The <code>for line in f.readlines()</code> just goes line by line, resulting in each line being the variable <code>line</code> that we can use later.</li>
+<li>For each line, we make it into a list, <code>pw</code>, that is the string split on white spaces.
+<code>'a b c'</code> would become the list <code>['a', 'b', 'c']</code>.</li>
+<li>If the length of the list is the same as the a set of that list, each item in the list is unique, meaning that the passphrase is valid.</li>
+</ul>
+<p>At the end, the resulting count is printed out. </p>
+<h4>Algorithmic Runtime</h4>
+<p>If $P$ is the number of passphrases and $L$ is their length, this solution is $O(PL)$ since we operate on each passphrase once and do an $O(L)$ operation on it (turning the list into a set).
+Getting the length of a list or a set is free. </p>
+<p>Memory usage is just $O(L)$ since the variable <code>pw</code> is overwritten for every different passphrase.</p>
+<h2>Part Two</h2>
+<blockquote>
+<p>Now, a valid passphrase must contain no two words that are anagrams of each other-- that is, a passphrase is invalid if any word's letters can be rearranged to form any other word in the passphrase.</p>
+<p>For example:</p>
+<ul>
+<li>
+<p><code>abcde fghij</code> is a valid passphrase.</p>
+</li>
+<li>
+<p><code>abcde xyz ecdab</code> is not valid - the letters from the third word can be rearranged to form the first word.</p>
+</li>
+<li>
+<p><code>a ab abc abd abf abj</code> is a valid passphrase, because all letters need to be used when forming another word.</p>
+</li>
+<li>
+<p><code>iiii oiii ooii oooi oooo</code> is valid.</p>
+</li>
+<li>
+<p><code>oiii ioii iioi iiio</code> is not valid - any of these words can be rearranged to form any other word.</p>
+</li>
+</ul>
+<p>Under this new system policy, how many passphrases are valid?</p>
+</blockquote>
+<h3>Interpretation, Planning, and Discussion</h3>
+<p>Ok, this is nice and similar to the previous one, thankfully.</p>
+<p>This will just require a simple modification to the logic in the first-- the anagram detection.
+A nice way to tell if two words are anagrams of each other without rearranging the letters in $L!$ different ways is to sort the letters and then compare the two words.
+If the letters are sorted to be the same, then they are an anagram.</p>
+<p>For instance, <code>c b a</code> and <code>c a b</code> are both sorted to be <code>a b c</code>, meaning that they are anagrams.
+We don't need to try all $3!$ permutations of the letters to determine that. </p>
+<h3>Solution</h3>
+<p>The code for Part 2 is just about as long as Part 1 with some passphrase sorting going on.</p>
+<div class="highlight"><pre><span></span><code><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;input.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+        <span class="n">pw</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">w</span><span class="p">)))</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pw</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">pw</span><span class="p">)):</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Part Two:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The only line different here is the fourth.
+Here, we go word by word, turning it first into a list of letters, sorting it, and then reassembling it back into a word-- <code>''.join(sorted(list(w)))</code>.
+Now, each passphrase is a list of sorted letters whose set can be compared to the list just as before.</p>
+<h4>Algorithmic Runtime</h4>
+<p>This one, understandably, is a bit slower than the first.
+For $P$ passphrases each of length $L$, this will take $O(PL\log{L})$ since it takes $L\log{L}$ time to sort a list of length $L$ and we're doing it $P$ times.
+Turning a list into a set takes $L$ time, but that's overshadowed by the $L\log{L}$ cost, so $L + L\log{L} = L\log{L}$.
+That's just one of the weird parts about algorithmic runtime complexity analysis.</p>
+<p>Memory usage is the same as the first part, $O(L)$.</p>
+<hr>
+<p>My solutions for the Advent of Code problems are available on <a href="https://gitlab.com/byarmis/AdventOfCode">GitLab</a> and <a href="https://github.com/byarmis/AdventOfCode">GitHub</a>.</p>	
+
+	</article>
+
+
+		  </div>	
+		  
+		  <div class="sidebar">
+
+	        <nav>
+	          <h2>Categories</h2>
+	          <ul>
+	              <li class="active"><a href="http://blog.yarm.is/category/posts.html">Posts</a></li>
+	              <li ><a href="http://blog.yarm.is/category/projects.html">Projects</a></li>
+	          </ul>
+	        </nav>
+
+	          <aside>
+	          <h2>Social</h2>
+			    <ul class="social">
+				  <li><a href="https://gitlab.com/byarmis/">gitlab</a><i></i></li>
+				  <li><a href="https://github.com/byarmis/">github</a><i></i></li>
+				  <li><a href="https://twitter.com/byarmis/">twitter</a><i></i></li>
+				  <li><a href="https://www.linkedin.com/in/byarmis/">linkedin</a><i></i></li>
+			    </ul>
+			  </aside>
+
+	          <aside>
+	            <h2>Links</h2>
+	            <ul>
+	                <li><a href="mailto:ben@yarm.is">email me</a></li>
+	                <li><a href="https://gitlab.com/byarmis/byarmis.gitlab.io">this site's repo</a></li>
+	            </ul>
+	          </aside>
+
+		  </div>
+
+	  </div>
+
+      <footer>
+		<p role="contentinfo">
+        © 2024 Ben Yarmis - Proudly powered by <a href="https://blog.getpelican.com/">pelican</a> with the <a href="https://github.com/fle/pelican-simplegrey">pelican-simplegrey</a> theme, modified.
+    	</p>
+
+	  </footer>	
+
+	</div>
+	
+	  <script>
+		var _gaq=[['_setAccount','UA-112478193-1'],['_trackPageview']];
+		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s)}(document,'script'));
+	  </script>

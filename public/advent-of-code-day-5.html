@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="">	
+<head>
+    <link rel="canonical" href="http://blog.yarm.is/advent-of-code-day-5.html" />
+	<meta charset="utf-8"/>
+	<title>Advent of Code: Day 5 - BLOG</title>	
+	<meta name="author" content="Ben Yarmis">
+	
+
+	<meta name="description" content="My solutions to the the fifth day's problems. Fun with lambdas">
+
+
+	<link rel="top" href="#" /><link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic,400italic,600italic|Source+Code+Pro' rel='stylesheet' type='text/css'></link>
+	<link rel="stylesheet" href="http://blog.yarm.is/theme/css/main.css" type="text/css" />
+		
+
+</head>
+	
+<body>
+
+    <div class="container">
+	  
+	  <header role="banner">
+	    <div class="feeds">
+	    </div>
+	      <nav class="pages">
+			  <a href="http://blog.yarm.is/pages/about-me.html">About Me</a>
+
+            <a href="http://blog.yarm.is/pdfs/YarmisResume.pdf">CV</a>
+	      </nav>
+		<a href="http://blog.yarm.is" class="title">BLOG</a>
+      </header>
+	
+	  <div class="wrapper">
+
+		  <div role="main" class="content">
+	<article class="full">
+			
+		<h1>Advent of Code: Day 5</h1>
+		
+<div class="metadata">
+  <time datetime="2018-11-19T00:00:00-06:00" pubdate>Mon November 19, 2018</time>
+    <address class="vcard author">
+      by <a class="url fn" href="http://blog.yarm.is/author/ben-yarmis.html">Ben Yarmis</a>
+    </address>
+  in <a href="http://blog.yarm.is/category/posts.html">Posts</a>
+<p class="tags">tagged <a href="http://blog.yarm.is/tag/python.html">Python</a>, <a href="http://blog.yarm.is/tag/advent-of-code.html">Advent of Code</a>, <a href="http://blog.yarm.is/tag/aoc-2017.html">AoC 2017</a></p></div>		
+		<h2>Part One</h2>
+<blockquote>
+<p>You are given message consisting of the offsets for jumps.
+Jumps are relative: -1 moves to the previous instruction, and 2 skips the next one.
+Start at the first instruction in the list.
+The goal is to follow the jumps until one leads outside the list.</p>
+<p>After each jump, the offset of that instruction increases by 1.
+So, if you come across an offset of 3, you would move three instructions forward, but change it to a 4 for the next time it is encountered.</p>
+<p>For example, consider the following list of jump offsets:</p>
+<p>$$ \left[
+         \begin{array}{c}
+             0 \
+             3 \
+             0 \
+             1 \
+             -3
+         \end{array} 
+     \right]
+  $$</p>
+<p>Positive jumps ("forward") move downward; negative jumps move upward.
+The following steps would be taken before an exit is found:</p>
+<ol>
+<li><code>(0) 3  0  1  -3</code>  - before we have taken any steps.</li>
+<li><code>(1) 3  0  1  -3</code>  - jump with offset <code>0</code> (that is, don't jump at all).
+The instruction is then incremented to <code>1</code>.</li>
+<li><code>2 (3) 0  1  -3</code>  - step forward because of the instruction we just modified.
+The first instruction is incremented again, now to <code>2</code>.</li>
+<li><code>2  4  0  1 (-3)</code> - jump all the way to the end; leave a <code>4</code> behind.</li>
+<li><code>2 (4) 0  1  -2</code>  - go back to where we just were; increment <code>-3</code> to <code>-2</code>.</li>
+<li><code>2  5  0  1  -2</code>  - jump <code>4</code> steps forward, escaping the maze.</li>
+</ol>
+<p>In this example, the exit is reached in 5 steps.</p>
+<p>How many steps does it take to reach the exit?</p>
+</blockquote>
+<h3>Interpretation, Planning, and Discussion</h3>
+<p>Algorithmically, this solution is fairly straightforward-- we just implement the rules of the problem.</p>
+<p>We can take advantage of some different parts of Python to keep this clean and looking nice.
+There were some slight modifications made to the solution to the first part after the second was revealed, but they were fairly minor.</p>
+<h3>Solution</h3>
+<p>The code for this solution is also small enough to show all of it and discuss it line-by-line:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">jumps_to_exit</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">j</span><span class="p">):</span>
+        <span class="n">to_jump</span> <span class="o">=</span> <span class="n">j</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">j</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">f</span><span class="p">(</span><span class="n">j</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+        <span class="n">i</span> <span class="o">+=</span> <span class="n">to_jump</span>
+        <span class="n">c</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">c</span>
+</code></pre></div>
+
+<ul>
+<li><code>jumps_to_exit</code> will be our function that takes in an input list and a function (I'll talk more about that later)</li>
+<li><code>i</code> is initialized to be our index in the list and <code>c</code> is the jumps taken to exit the list</li>
+<li><code>while 0 &lt;= i &lt; len(j)</code>: while our pointer hasn't gone over either end of the list, we keep running the algorithm in the body of the loop.</li>
+<li><code>to_jump</code> is the offset that we're going to add to our current one</li>
+<li><code>j[i] += f(j[i])</code>: this is where there's some fun!
+We use the function that's the second argument to the function to calculate our jump value.
+For part one, this is just a function that returns the value <code>1</code>.
+We don't need to take up a whole lot of space with this function and can use Python's <code>lambda</code>, or anonymous, functions to define them in-line.
+In this case, for part one, it's simply <code>part_one = lambda x: 1</code>.
+It can be called like a normal function with one argument, but this one always returns <code>1</code>.</li>
+<li><code>i += to_jump</code>: here, we add the amount that we should jump to our current index's value</li>
+<li>Lastly, we increment our jump counter by 1 (<code>c += 1</code>) and return it if we've broken out of the loop off either end of the list.</li>
+</ul>
+<p>Something to note: we're modifying the list in-place.
+If we want to call this function multiple times with the same input list, we have to make sure we're passing it a copy and not the original one.</p>
+<h4>Algorithmic Runtime</h4>
+<p>Because of the rule that adds one to the value before we jump, this <em>isn't</em> $O(\infty)$ worst-case since we are guaranteed to run over <em>an</em> end eventually.</p>
+<p>I <em>think</em> that the runtime of this is $O(Nm)$ where $N$ is the number of elements in the list and $m$ is the minimum absolute value in the list.
+If we have a long list but the first value is equal to or greater than the list's length, then we just have to do one operation and we're done.
+Similarly, if we have a really long list and small values, we'll be making many jumps.</p>
+<p>We don't use any additional data structures, so this uses $O(1)$ additional memory.</p>
+<h2>Part Two</h2>
+<blockquote>
+<p>Now, after each jump, if the offset was three or more, instead decrease it by 1.
+Otherwise, increase it by 1 as before.</p>
+<p>Using this rule with the above example, the process now takes 10 steps, and the offset values after finding the exit are left as <code>2 3 2 3 -1</code>.</p>
+<p>How many steps does it now take to reach the exit?</p>
+</blockquote>
+<h3>Interpretation, Planning, and Discussion</h3>
+<p>Awesome!
+Since our previous function took in a function as the second argument to calculate the amount we should jump, we just need to change the function that we're passing in.</p>
+<h3>Solution</h3>
+<p>This modification is even shorter!</p>
+<div class="highlight"><pre><span></span><code><span class="n">part_two</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="k">else</span> <span class="mi">1</span>
+</code></pre></div>
+
+<p>Seriously, that's it.
+We call the function the same as before, but instead of calling <code>jumps_to_exit(list_in[:], part_one)</code>, we call it with <code>part_two</code>.</p>
+<p>The <code>list_in[:]</code> syntax makes a copy of the list.
+I normally see list slicing used like <code>list_in[1:]</code> to skip the first element or <code>list_in[:-1]</code> to skip the last.
+It's a slightly odd use of the slicing syntax, effectively saying "give me <code>list_in</code> starting at the beginning and ending at the end."</p>
+<h4>Algorithmic Runtime</h4>
+<p>This one's the same as before since the amount we increment by isn't a factor in the runtime.</p>
+<hr>
+<p>My solutions for the Advent of Code problems are available on <a href="https://gitlab.com/byarmis/AdventOfCode">GitLab</a> and <a href="https://github.com/byarmis/AdventOfCode">GitHub</a>.</p>	
+
+	</article>
+
+
+		  </div>	
+		  
+		  <div class="sidebar">
+
+	        <nav>
+	          <h2>Categories</h2>
+	          <ul>
+	              <li class="active"><a href="http://blog.yarm.is/category/posts.html">Posts</a></li>
+	              <li ><a href="http://blog.yarm.is/category/projects.html">Projects</a></li>
+	          </ul>
+	        </nav>
+
+	          <aside>
+	          <h2>Social</h2>
+			    <ul class="social">
+				  <li><a href="https://gitlab.com/byarmis/">gitlab</a><i></i></li>
+				  <li><a href="https://github.com/byarmis/">github</a><i></i></li>
+				  <li><a href="https://twitter.com/byarmis/">twitter</a><i></i></li>
+				  <li><a href="https://www.linkedin.com/in/byarmis/">linkedin</a><i></i></li>
+			    </ul>
+			  </aside>
+
+	          <aside>
+	            <h2>Links</h2>
+	            <ul>
+	                <li><a href="mailto:ben@yarm.is">email me</a></li>
+	                <li><a href="https://gitlab.com/byarmis/byarmis.gitlab.io">this site's repo</a></li>
+	            </ul>
+	          </aside>
+
+		  </div>
+
+	  </div>
+
+      <footer>
+		<p role="contentinfo">
+        © 2024 Ben Yarmis - Proudly powered by <a href="https://blog.getpelican.com/">pelican</a> with the <a href="https://github.com/fle/pelican-simplegrey">pelican-simplegrey</a> theme, modified.
+    	</p>
+
+	  </footer>	
+
+	</div>
+	
+	  <script>
+		var _gaq=[['_setAccount','UA-112478193-1'],['_trackPageview']];
+		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s)}(document,'script'));
+	  </script>

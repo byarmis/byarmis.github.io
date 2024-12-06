@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="">	
+<head>
+    <link rel="canonical" href="http://blog.yarm.is/advent-of-code-introduction-and-day-1.html" />
+	<meta charset="utf-8"/>
+	<title>Advent of Code: Introduction and Day 1 - BLOG</title>	
+	<meta name="author" content="Ben Yarmis">
+	
+
+	<meta name="description" content="Intros and my solutions to the first day's problems">
+
+
+	<link rel="top" href="#" /><link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic,400italic,600italic|Source+Code+Pro' rel='stylesheet' type='text/css'></link>
+	<link rel="stylesheet" href="http://blog.yarm.is/theme/css/main.css" type="text/css" />
+		
+
+</head>
+	
+<body>
+
+    <div class="container">
+	  
+	  <header role="banner">
+	    <div class="feeds">
+	    </div>
+	      <nav class="pages">
+			  <a href="http://blog.yarm.is/pages/about-me.html">About Me</a>
+
+            <a href="http://blog.yarm.is/pdfs/YarmisResume.pdf">CV</a>
+	      </nav>
+		<a href="http://blog.yarm.is" class="title">BLOG</a>
+      </header>
+	
+	  <div class="wrapper">
+
+		  <div role="main" class="content">
+	<article class="full">
+			
+		<h1>Advent of Code: Introduction and Day 1</h1>
+		
+<div class="metadata">
+  <time datetime="2018-02-05T00:00:00-06:00" pubdate>Mon February 5, 2018</time>
+    <address class="vcard author">
+      by <a class="url fn" href="http://blog.yarm.is/author/ben-yarmis.html">Ben Yarmis</a>
+    </address>
+  in <a href="http://blog.yarm.is/category/posts.html">Posts</a>
+<p class="tags">tagged <a href="http://blog.yarm.is/tag/python.html">Python</a>, <a href="http://blog.yarm.is/tag/advent-of-code.html">Advent of Code</a>, <a href="http://blog.yarm.is/tag/aoc-2017.html">AoC 2017</a></p></div>		
+		<h2>Introduction</h2>
+<h3>What</h3>
+<p>This series of blog posts are my attempt at solving all of the <a href="http://adventofcode.com/">Advent of Code</a> posts, starting at 2017 and then working on the previous years.
+The Advent of Code consists of puzzles and problems, one each day for the month of December.
+Yes, I know it's February.</p>
+<p>After the problems are posted at midnight each day, the first hundred people who solve get points; starting at 100 points for the first person who solves it and decreasing down to 1 point for the hundredth person who solves it.
+The way that a solution is arrived at is not specified-- it can be in any programming language or not any programming language at all.
+I've been told that some people just print out their input and work through it by hand with a pencil and other people <a href="https://www.reddit.com/r/adventofcode/comments/7jicl9/2017_day_13_part_1factorio_anyone_here_play/">decide to go an even more difficult direction</a>.</p>
+<p>Each day has two parts-- the first being simpler and / or easier than the second.  The second part may ask you something about the first part ("how many times did you ___ ?") or modify it slightly or not so slightly ("instead of calculating ___ like ___, instead, calculate it like ___").
+Solving the first part results in one star and the second part results in an addtional one.
+Solving both parts isn't required and solving the days in order isn't required either-- I decided to do both, however.</p>
+<h3>How</h3>
+<p>The ideal solution for a given problem is an interesting mix of run-time as well as implementation time.
+The algorithmically fastest solution that takes too long to write will lose to the slower solution that can be written then run in fewer lines of code.
+This can lead to interesting solutions that might consist of illegible code that can be written quickly or maybe even no code at all.
+Minutes of thinking about the problem to come up with an answer in your head may beat the best algorithm any day-- after all, you only get points if you're one of the first hundred people to solve a given problem.</p>
+<p>I started working on the problems back in December, but by no means kept up with the pace of the problems (as evidenced by me publishing this blog post in February).
+I also didn't start on the first problem on December 1, but more like the 14th.
+I <em>did</em> start on the problems in December, in my defense!</p>
+<p>I decided to take a different approach to the problems-- instead of the quickest to code or the best algorithm, I went for what I thought was the "best".
+Possibly the fastest, but hopefully the cleanest or most-readable.
+If nothing else, aiming to be cleaner and more readable than the fastest and faster than the cleanest!</p>
+<p>All of my solutions for the Advent of Code problems are available on <a href="https://gitlab.com/byarmis/AdventOfCode">GitLab</a> and <a href="https://github.com/byarmis/AdventOfCode">GitHub</a>.
+Feel free to take a look!</p>
+<hr>
+<h2>Day 1</h2>
+<h3>Part One</h3>
+<blockquote>
+<p>The captcha requires you to review a sequence of digits (your puzzle input) and find the sum of all digits that match the next digit in the list.
+The list is circular, so the digit after the last digit is the first digit in the list.</p>
+<p>For example:</p>
+<ul>
+<li><code>1122</code> produces a sum of 3 (1 + 2) because the first digit (1) matches the second digit and the third digit (2) matches the fourth digit.</li>
+<li><code>1111</code> produces 4 because each digit (all 1) matches the next.</li>
+<li><code>1234</code> produces 0 because no digit matches the next.</li>
+<li><code>91212129</code> produces 9 because the only digit that matches the next one is the last digit, 9.</li>
+</ul>
+<p>What is the solution to your captcha?</p>
+</blockquote>
+<h4>Interpretation, Planning, and Discussion</h4>
+<p>Ok, so this problem consists of a series of digits, 0 through 9.
+It looks like we're going to want to iterate through the input once and only once-- thinking of algrotihmic complexity, we can probably do this in $O(N)$ (where $N$ is the length of the input string).
+At least, if we can't, we'll have to think about it a bit and justify it to ourselves.</p>
+<p>There's a slight twist here in that the list is circular; the last digit will have to be compared to the first.
+As far as data structures for this goes, we're going to need something that stores values in order (so we can't use a set) and if we can access the first or last value in constant time, that'd be better.
+Fortunately, we can just use an array (or a string) and iterate over it.</p>
+<h4>Solution</h4>
+<p>Let's make a function that takes in a number (or a string) and returns our calculated captcha.
+This day's problem is simple enough that we just need the one function and not a whole lot else.
+We're going to return <code>out</code> and we need to initialize it to <code>0</code>-- simple enough.
+This function can accept either an integer (to make testing easier) or a string (which is what reading a file would return) so we need to cast what we get to a string.
+If we're passed a string, <code>str(i)</code> won't do anything.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inverse_captcha_p1</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Python's <code>zip</code> function takes iterables and returns the first of all of the iterables, the second of all of the iterables, and so on until we're all the way through the shortest one (<a href="https://docs.python.org/3/library/itertools.html#itertools.zip_longest">the itertools module has an <code>izip_longest</code></a> function that keeps going to the longest, instead of the shortest).
+We're going to pass it our string twice with the second one being our whole string but skipping the first value.
+This way, we look at the first value and the second, then the second value and the thrid, and so on.</p>
+<p>If they're the same, we need to add the value of either of them to our output counter.
+We're iterating over a string, so <code>first</code> is a string-- the <code>int</code> function casts that string to an integer, allowing us to do math with it (<code>1 + 1</code> equals <code>2</code>, but <code>'1' + '1'</code> is <code>'11'</code>).</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">for</span> <span class="n">first</span><span class="p">,</span> <span class="n">second</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+        <span class="k">if</span> <span class="n">first</span> <span class="o">==</span> <span class="n">second</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">first</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Lastly, the input is circular so now we need to compare the last to the first before returning our sum.</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">if</span> <span class="n">i</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">out</span>
+</code></pre></div>
+
+<p>Good news!
+We iterated over our list once-ish.
+One of the weird things about algorithmic complexity calculations is that pesky things like numbers kinda merge together so now one is effectively the same thing as two.</p>
+<h3>Part Two</h3>
+<blockquote>
+<p>Now, instead of considering the next digit, it wants you to consider the digit halfway around the circular list. that is, if your list contains 10 items, only include a digit in your sum if the digit 10/2 = 5 steps forward matches it.
+Fortunately, your list has an even number of elements.</p>
+<p>For example:</p>
+<ul>
+<li><code>1212</code> produces 6: the list contains 4 items, and all four digits match the digit 2 items ahead.</li>
+<li><code>1221</code> produces 0, because every comparison is between a 1 and a 2.</li>
+<li><code>123425</code> produces 4, because both 2s match each other, but no other digit has a match.</li>
+<li><code>123123</code> produces 12.</li>
+<li><code>12131415</code> produces 4.</li>
+</ul>
+<p>What is the solution to your new captcha?</p>
+</blockquote>
+<h4>Interpretation, Planning, and Discussion</h4>
+<p>Ok, so this is pretty similar to the first part.
+Instead of comparing one with the next, we have to be halway around (so instead of <code>i</code> and <code>i + 1</code>, we compare <code>i</code> and <code>i + len(N) / 2</code>) for just half of the array and then we can double our result at the end.
+If a number in the first half has a twin, we'll run into it on the second half of the array so we can double the initial value and not even worry about the second half.</p>
+<h4>Solution</h4>
+<p>Our initialization is pretty much the same as before, except we also want to make sure that there's an even number of elements.
+The problem does specify that the length of the input is even, but adding the check doesn't hurt. </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inverse_captcha_p2</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Length of input must be even&#39;</span>
+</code></pre></div>
+
+<p>The looping is similar again, but this time, instead of the second argument in our <code>zip</code> being the list offset by one, it's now the second half of the list.
+Because <code>len(i)</code> is even, <code>len(i) / 2 == len(i) // 2</code> so they <em>should</em> be equivalent.
+<em>But</em> in Python 3, division will always result in a float (<code>2.0</code>) instead of an integer (<code>2</code>).
+List slicing requires integer indexes so we use the floor divide (<code>//</code>) instead.</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">for</span> <span class="n">first</span><span class="p">,</span> <span class="n">second</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="p">:</span> <span class="p">]):</span>
+        <span class="k">if</span> <span class="n">first</span> <span class="o">==</span> <span class="n">second</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">first</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Finally, we return double what we calculated.</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">return</span> <span class="n">out</span> <span class="o">*</span> <span class="mi">2</span>
+</code></pre></div>
+
+<p>Part two, like the first part, runs in $O(N)$ (linear) time.</p>
+<hr>
+<p>My solutions for the Advent of Code problems are available on <a href="https://gitlab.com/byarmis/AdventOfCode">GitLab</a> and <a href="https://github.com/byarmis/AdventOfCode">GitHub</a>.</p>	
+
+	</article>
+
+
+		  </div>	
+		  
+		  <div class="sidebar">
+
+	        <nav>
+	          <h2>Categories</h2>
+	          <ul>
+	              <li class="active"><a href="http://blog.yarm.is/category/posts.html">Posts</a></li>
+	              <li ><a href="http://blog.yarm.is/category/projects.html">Projects</a></li>
+	          </ul>
+	        </nav>
+
+	          <aside>
+	          <h2>Social</h2>
+			    <ul class="social">
+				  <li><a href="https://gitlab.com/byarmis/">gitlab</a><i></i></li>
+				  <li><a href="https://github.com/byarmis/">github</a><i></i></li>
+				  <li><a href="https://twitter.com/byarmis/">twitter</a><i></i></li>
+				  <li><a href="https://www.linkedin.com/in/byarmis/">linkedin</a><i></i></li>
+			    </ul>
+			  </aside>
+
+	          <aside>
+	            <h2>Links</h2>
+	            <ul>
+	                <li><a href="mailto:ben@yarm.is">email me</a></li>
+	                <li><a href="https://gitlab.com/byarmis/byarmis.gitlab.io">this site's repo</a></li>
+	            </ul>
+	          </aside>
+
+		  </div>
+
+	  </div>
+
+      <footer>
+		<p role="contentinfo">
+        © 2024 Ben Yarmis - Proudly powered by <a href="https://blog.getpelican.com/">pelican</a> with the <a href="https://github.com/fle/pelican-simplegrey">pelican-simplegrey</a> theme, modified.
+    	</p>
+
+	  </footer>	
+
+	</div>
+	
+	  <script>
+		var _gaq=[['_setAccount','UA-112478193-1'],['_trackPageview']];
+		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s)}(document,'script'));
+	  </script>
